@@ -8,7 +8,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         return getBotNumStatic();
     }*/
 
-    private static String name;
+    private static String name = "Bot";
 
     public static int getNum() {
         int botChoice;
@@ -37,10 +37,6 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
             wantToBatBool = true;
         }
         return wantToBatBool;
-    }
-
-    public static void setName(String name) {
-        CPUPlayer.name = name;
     }
 
     public static String getName() {

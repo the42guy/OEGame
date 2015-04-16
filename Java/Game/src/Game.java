@@ -13,6 +13,7 @@ public class Game {
     }
 
     public static void startGame() {
+        setPlayerName();
         toss();
         if(userWantBat) {
             bat();
@@ -146,6 +147,12 @@ public class Game {
             runsToMakeStatement = String.format(runsToMakeStatement, CPUPlayer.getName(), (scorePlayer2-scorePlayer1), Player.getName());
         }
         return runsToMakeStatement;
+    }
+
+    private static void setPlayerName() {
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+        Player.setName(name);
     }
 
 }

@@ -33,6 +33,7 @@ public class Player /*implements PlayerInterface*/ {                            
     }
 
     public static void setName(String name) {
+
         Player.name = name;
     }
 
