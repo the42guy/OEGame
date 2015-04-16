@@ -3,9 +3,10 @@ import java.util.Scanner;
 /**
  * Created by peter on 15/4/15.
  */
-public class Player {
+public class Player /*implements PlayerInterface*/ {                                                                    //will implement interface when multiplayer is more developed
     static Scanner s = new Scanner(System.in);
     private static int score;
+    private static String name;
 
     public static int getNum() {
         System.out.print("Enter your number (1-10): ");
@@ -30,5 +31,14 @@ public class Player {
     public static int getScore() {
         return score;
     }
+
+    public static void setName(String name) {
+        Player.name = name;
+    }
+
+    public static String getName() {
+        return Player.name;
+    }
+
 
 }

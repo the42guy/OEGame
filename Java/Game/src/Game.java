@@ -16,9 +16,11 @@ public class Game {
         toss();
         if(userWantBat) {
             bat();
+            System.out.println(runsToMake());
             ball();
         } else {
             ball();
+            System.out.println(runsToMake());
             bat();
         }
         setWinner();
@@ -132,6 +134,18 @@ public class Game {
             }
             System.out.printf("Bot\'s score is %d\n\n", CPUPlayer.getScore());
         } while (botNotYetOut);
+    }
+
+    private static String runsToMake() {
+        int scorePlayer1 = Player.getScore();
+        int scorePlayer2 = CPUPlayer.getScore();
+        String runsToMakeStatement = "%s needs to make a minimum of %d points more to beat %s.";
+        if(scorePlayer1 > scorePlayer2) {
+            runsToMakeStatement = String.format(runsToMakeStatement, Player.getName(), (scorePlayer1-scorePlayer2), CPUPlayer.getName());
+        } else if (scorePlayer1 < scorePlayer2) {
+            runsToMakeStatement = String.format(runsToMakeStatement, CPUPlayer.getName(), (scorePlayer2-scorePlayer1), Player.getName());
+        }
+        return runsToMakeStatement;
     }
 
 }
