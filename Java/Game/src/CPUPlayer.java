@@ -10,26 +10,26 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
 
     private static String name = "Bot";
 
-    public static int getNum() {
+    public static int getNum() {                                                                                        //gets a random input from the bot
         int botChoice;
-        looper: do {
-            botChoice = (int) (Math.random() * 10);
-        } while (!((botChoice <= 10) && (botChoice >= 1)));
+        do {
+            botChoice = (int) (Math.random() * 10);                                                                     //a random int with max limit 10 (1-10)
+        } while (!((botChoice <= 10) && (botChoice >= 1)));                                                             //break it if the int is between 1 and 10, else repeat to get a desried int
         return botChoice;
     }
 
-    public static void incrementScore(int incrementValue) {
+    public static void incrementScore(int incrementValue) {                                                             //duh
         score += incrementValue;
     }
 
-    public static int getScore() {
+    public static int getScore() {                                                                                      //duh
         return score;
     }
 
-    public static boolean wantToBat() {
-        boolean wantToBatBool = true;
-        int aRandomInt = (int) (Math.random() * 99);
-        if(aRandomInt % 2 == 0) {
+    public static boolean wantToBat() {                                                                                 //a random method to set the batting preference for the bot
+        boolean wantToBatBool = true;                                                                                   //wants to bat by default
+        int aRandomInt = (int) (Math.random() * 99);                                                                    //an int between 1 and 99
+        if(aRandomInt % 2 != 0) {                                                                                       //more chances that the number is odd. So more likely that it wll chose to ball (51%)
             System.out.println("\nThe bot chose to ball");
             wantToBatBool = false;
         } else {
@@ -39,7 +39,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         return wantToBatBool;
     }
 
-    public static String getName() {
+    public static String getName() {                                                                                    //The name's Bot. James Bot.
         return CPUPlayer.name;
     }
 }
