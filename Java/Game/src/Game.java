@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Created by peter on 15/4/15.
  */
-public class Game {
+public abstract class Game {
     private static int roundsPlayed;
     private static Scanner sc = new Scanner(System.in);
     private static boolean userWonToss, userWantBat, userWonGame;
