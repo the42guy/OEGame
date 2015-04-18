@@ -143,10 +143,10 @@ public class Game {
         int scorePlayer1 = Player.getScore();
         int scorePlayer2 = CPUPlayer.getScore();
         String runsToMakeStatement = "%s needs to make a minimum of %d points more to beat %s.";                        //the default message template. %s means string and %d is int
-        if(scorePlayer1 > scorePlayer2) {
-            runsToMakeStatement = String.format(runsToMakeStatement, Player.getName(), (scorePlayer1-scorePlayer2), CPUPlayer.getName());   //inserts the given strings and ints in the template
-        } else if (scorePlayer1 < scorePlayer2) {
-            runsToMakeStatement = String.format(runsToMakeStatement, CPUPlayer.getName(), (scorePlayer2-scorePlayer1), Player.getName());
+        if(scorePlayer1 < scorePlayer2) {
+            runsToMakeStatement = String.format(runsToMakeStatement, Player.getName(), (scorePlayer2-scorePlayer1), CPUPlayer.getName());   //inserts the given strings and ints in the template
+        } else if (scorePlayer1 > scorePlayer2) {
+            runsToMakeStatement = String.format(runsToMakeStatement, CPUPlayer.getName(), (scorePlayer1-scorePlayer2), Player.getName());
         }
         return runsToMakeStatement;
     }

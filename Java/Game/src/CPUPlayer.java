@@ -3,6 +3,7 @@
  */
 public class CPUPlayer extends Player /*implements PlayerInterface*/ {                                                  //will implement when multiplayer is more developed, possibly not extend Player
     private static int score;
+    private static int predictability = 8;                                                                              //on a scale of 1-10, 1 means extremely difficult, 10 means darn easy
 
     /*public short getBotNum() {                                                                                          //this method might be needed for multi-bots
         return getBotNumStatic();
@@ -15,6 +16,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         do {
             botChoice = (int) (Math.random() * 10);                                                                     //a random int with max limit 10 (1-10)
         } while (!((botChoice <= 10) && (botChoice >= 1)));                                                             //break it if the int is between 1 and 10, else repeat to get a desried int
+
         return botChoice;
     }
 
@@ -41,5 +43,9 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
 
     public static String getName() {                                                                                    //The name's Bot. James Bot.
         return CPUPlayer.name;
+    }
+
+    public static void setPredictability() {
+
     }
 }
