@@ -9,7 +9,7 @@ public abstract class Game {
     private static boolean userWonToss, userWantBat, userWonGame;
 
     private Game() {
-        System.out.println("Game class should not be instantiated. It is a static class.");                             //you can not create an instance of the Game class. Static and private.
+        System.out.println("Game class should not be instantiated. It is an abstract class.");                             //you can not create an instance of the Game class. Static and private.
     }
 
     public static void startGame() {                                                                                    //the game starts here

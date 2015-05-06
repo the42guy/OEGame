@@ -1,15 +1,52 @@
+import java.util.Map;
+
 /**
  * Created by peter on 15/4/15.
  */
 public class CPUPlayer extends Player /*implements PlayerInterface*/ {                                                  //will implement when multiplayer is more developed, possibly not extend Player
     private static int score;
-    private static int predictability = 8;                                                                              //on a scale of 1-10, 1 means extremely difficult, 10 means darn easy
+    private static int unPredictability = 2;                                                                            //on a scale of 1-10, 10 means extremely difficult, 1 means darn easy
+    private static int[] range;
+    private static String name = "Bot";
 
     /*public short getBotNum() {                                                                                          //this method might be needed for multi-bots
         return getBotNumStatic();
     }*/
 
-    private static String name = "Bot";
+    static {                                                                                                            //the static initializer
+
+    }
+
+    private static void setRanges() {                                                                                   //randomly sets the ranges, depending on max capacity
+        range = new int[unPredictability];
+        for(int i = 0; i < range.length; i++) {
+            int previous;
+            range[i] = (int) (Math.random() * 10);
+            if ((range.length != 1) || (i != 0)) {
+                boolean noUniqueValues = true;
+                do {
+                    previous = i - 1;
+                    if(equal(range[previous], range[i])) {
+                        range[i] = (int) (Math.random() * 10);
+                        if(equal(range[i], range[previous])) {
+                            noUniqueValues = true;
+                        } else if (!(equal(range[i], range[previous]))) {
+                            noUniqueValues = false;
+                        }
+                    }
+                } while (noUniqueValues);
+            }
+        }
+    }
+
+    private static boolean equal(int a, int b) {
+        boolean equal = false;
+        if(a == b) {
+            equal = true;
+        }
+        return equal;
+    }
+
 
     public static int getNum() {                                                                                        //gets a random input from the bot
         int botChoice;
