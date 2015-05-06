@@ -1,4 +1,6 @@
-import java.util.Map;
+import java.math.*;
+
+import static java.lang.Math.*;
 
 /**
  * Created by peter on 15/4/15.
@@ -21,13 +23,13 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         range = new int[unPredictability];
         for(int i = 0; i < range.length; i++) {
             int previous;
-            range[i] = (int) (Math.random() * 10);
+            range[i] = (int) (random() * 10);
             if ((range.length != 1) || (i != 0)) {
                 boolean noUniqueValues = true;
                 do {
                     previous = i - 1;
                     if(equal(range[previous], range[i])) {
-                        range[i] = (int) (Math.random() * 10);
+                        range[i] = (int) (random() * 10);
                         if(equal(range[i], range[previous])) {
                             noUniqueValues = true;
                         } else if (!(equal(range[i], range[previous]))) {
@@ -51,7 +53,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     public static int getNum() {                                                                                        //gets a random input from the bot
         int botChoice;
         do {
-            botChoice = (int) (Math.random() * 10);                                                                     //a random int with max limit 10 (1-10)
+            botChoice = (int) (random() * 10);                                                                     //a random int with max limit 10 (1-10)
         } while (!((botChoice <= 10) && (botChoice >= 1)));                                                             //break it if the int is between 1 and 10, else repeat to get a desried int
 
         return botChoice;
@@ -67,7 +69,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
 
     public static boolean wantToBat() {                                                                                 //a random method to set the batting preference for the bot
         boolean wantToBatBool = true;                                                                                   //wants to bat by default
-        int aRandomInt = (int) (Math.random() * 99);                                                                    //an int between 1 and 99
+        int aRandomInt = (int) (random() * 99);                                                                    //an int between 1 and 99
         if(aRandomInt % 2 != 0) {                                                                                       //more chances that the number is odd. So more likely that it wll chose to ball (51%)
             System.out.println("\nThe bot chose to ball");
             wantToBatBool = false;
