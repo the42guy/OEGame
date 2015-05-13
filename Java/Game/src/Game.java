@@ -14,6 +14,7 @@ public abstract class Game {
 
     public static void startGame() {                                                                                    //the game starts here
         setPlayerName();                                                                                                //sets user's name
+        setDifficulty();
         toss();                                                                                                         //do a toss to select batting/balling
         if(userWantBat) {                                                                                               //userWantBat is set by toss
             bat();                                                                                                      //do the batting

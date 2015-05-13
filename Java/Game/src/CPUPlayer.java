@@ -25,7 +25,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
             if ((range.length != 1) || (i != 0)) {
                 boolean noUniqueValues = true;
                 do {
-                    previous = i - 1;
+                    previous = i - 1;                                                                                   //@TODO: exceptions here
                     if(numEqual(range[previous], range[i])) {
                         range[i] = (int) (random() * 10);
                         if(numEqual(range[i], range[previous])) {
