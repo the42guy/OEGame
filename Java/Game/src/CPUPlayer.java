@@ -1,5 +1,3 @@
-import java.math.*;
-
 import static java.lang.Math.*;
 
 /**
@@ -7,7 +5,7 @@ import static java.lang.Math.*;
  */
 public class CPUPlayer extends Player /*implements PlayerInterface*/ {                                                  //will implement when multiplayer is more developed, possibly not extend Player
     private static int score;
-    private static int unPredictability = 2;                                                                            //on a scale of 1-10, 10 means extremely difficult, 1 means darn easy
+    private static int unPredictabilityLen = 2;                                                                            //on a scale of 1-10, 10 means extremely difficult, 1 means darn easy
     private static int[] range;
     private static String name = "Bot";
 
@@ -20,7 +18,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     }
 
     private static void setRanges() {                                                                                   //randomly sets the ranges, depending on max capacity
-        range = new int[unPredictability];
+        range = new int[unPredictabilityLen];
         for(int i = 0; i < range.length; i++) {
             int previous;
             range[i] = (int) (random() * 10);
@@ -28,11 +26,11 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                 boolean noUniqueValues = true;
                 do {
                     previous = i - 1;
-                    if(equal(range[previous], range[i])) {
+                    if(numEqual(range[previous], range[i])) {
                         range[i] = (int) (random() * 10);
-                        if(equal(range[i], range[previous])) {
+                        if(numEqual(range[i], range[previous])) {
                             noUniqueValues = true;
-                        } else if (!(equal(range[i], range[previous]))) {
+                        } else /* if (!(numEqual(range[i], range[previous])))*/ {
                             noUniqueValues = false;
                         }
                     }
@@ -41,12 +39,12 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         }
     }
 
-    private static boolean equal(int a, int b) {
-        boolean equal = false;
+    private static boolean numEqual(int a, int b) {
+        boolean areEqual = false;
         if(a == b) {
-            equal = true;
+            areEqual = true;
         }
-        return equal;
+        return areEqual;
     }
 
 
@@ -84,7 +82,8 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         return CPUPlayer.name;
     }
 
-    public static void setPredictability() {
-
+    public static void setUnPredictabilityLen(int length) {
+        unPredictabilityLen = length;
+        setRanges();
     }
 }

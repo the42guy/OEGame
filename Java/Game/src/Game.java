@@ -18,7 +18,7 @@ public abstract class Game {
         if(userWantBat) {                                                                                               //userWantBat is set by toss
             bat();                                                                                                      //do the batting
             System.out.println(runsToMake());                                                                           //displays the target for bot
-            ball();                                                                                                     //user balls  :P
+            ball();                                                                                                     //user balls
         } else {                                                                                                        //if the user wants to ball
             ball();                                                                                                     //then ball
             System.out.println(runsToMake());                                                                           //display user's target
@@ -64,6 +64,12 @@ public abstract class Game {
         } else {
             userWantBat = !CPUPlayer.wantToBat();                                                                       //If CPUPlayer wants to bat, user doesn't. Vice versa.
         }
+    }
+
+    private static void setDifficulty() {
+        System.out.println("\nSetting the difficulty of the bot: ");
+        short difficulty = (short) Player.getNum();
+        CPUPlayer.setUnPredictabilityLen(difficulty);
     }
 
     private static void setUserBattingPref() {

@@ -9,7 +9,7 @@ public class Player /*implements PlayerInterface*/ {                            
     private static String name;
 
     public static int getNum() {                                                                                        //asks user for a numeric input
-        System.out.print("Enter your number (1-10): ");
+        System.out.print("Enter a number (1-10): ");
         int userChoice = 0;                                                                                             //initializes default userChoice to prevent errors.
         boolean loopTheSelection = true;                                                                                //user has not done input, so loop it
         do {
