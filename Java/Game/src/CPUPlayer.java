@@ -22,10 +22,12 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         for(int i = 0; i < range.length; i++) {
             int previous;
             range[i] = (int) (random() * 10);
-            if ((range.length != 1) || (i != 0)) {
+            if (i == 0) {
+                System.out.println("First time here");
+            } else if ((range.length != 1) || (i != 0)) {
                 boolean noUniqueValues = true;
                 do {
-                    previous = i - 1;                                                                                   //@TODO: exceptions here
+                    previous = i - 1;
                     if(numEqual(range[previous], range[i])) {
                         range[i] = (int) (random() * 10);
                         if(numEqual(range[i], range[previous])) {

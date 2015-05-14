@@ -69,7 +69,7 @@ public abstract class Game {
 
     private static void setDifficulty() {
         System.out.println("\nSetting the difficulty of the bot: ");
-        short difficulty = (short) Player.getNum();
+        int difficulty = Player.getNum();
         CPUPlayer.setUnPredictabilityLen(difficulty);
     }
 
