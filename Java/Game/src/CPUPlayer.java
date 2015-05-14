@@ -24,6 +24,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
             range[i] = (int) (random() * 10);
             if (i == 0) {
                 System.out.println("First time here");
+                System.out.printf("Range[%d] initialized as %d", i, range[i]);
             } else if ((range.length != 1) || (i != 0)) {
                 boolean noUniqueValues = true;
                 do {
@@ -37,6 +38,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                         }
                     }
                 } while (noUniqueValues);
+                System.out.printf("Range[%d] initialized as %d", i, range[i]);
             }
         }
     }
