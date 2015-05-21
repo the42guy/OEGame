@@ -33,8 +33,10 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                         range[i] = (int) (random() * 10);
                         if(numEqual(range[i], range[previous])) {
                             noUniqueValues = true;
+                            System.out.println("Some values are similar: " + range[i] + " and " + range[previous]);
                         } else /* if (!(numEqual(range[i], range[previous])))*/ {
                             noUniqueValues = false;
+                            System.out.println("Some values are not similar: " + range[i] + " and " + range[previous]);
                         }
                     }
                 } while (noUniqueValues);
