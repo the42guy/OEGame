@@ -22,7 +22,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         for(int i = 0; i < range.length; i++) {
             int previous;
             range[i] = (int) (random() * 10);
-            if (i == 0) {
+            if ((i == 0) || (range.length == 1)) {
                 System.out.println("First time here");
                 System.out.printf("Range[%d] initialized as %d", i, range[i]);
             } else if ((range.length != 1) || (i != 0)) {
