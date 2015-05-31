@@ -17,18 +17,19 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
 
     }
 
-    private static void setRanges() {                                                                                   //randomly sets the ranges, depending on max capacity
-        range = new int[unPredictabilityLen];
+    private static void setRanges(int length) {                                                                                   //randomly sets the ranges, depending on max capacity
+        range = new int[length];
+        System.out.printf("The length is %d, which is equal to %d\n", range.length, length);
         for(int i : range) {
             int previous;
             range[i] = (int) (random() * 10);
             if ((i == 0) || (range.length == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
                 System.out.println("First time here/range length is one");
                 System.out.printf("range[%d] initialized as %d in this first iteration", i, range[i]);
-            } else if ((range.length > 1) || (i != 0)) {                                                               //if the range length is more than 1 or not equal to 0
+            } else if (range.length > 1) {                                                                //if the range length is more than 1 or not equal to 0
                 boolean noUniqueValues = true;
                 do {
-                    previous = i - 1;
+                    previous = i - 1;                                                                                   //won't generate exceptions as previous will exist for ranges longer than one in length
                     if(numEqual(range[previous], range[i])) {
                         range[i] = (int) (random() * 10);
                         if(numEqual(range[i], range[previous])) {
@@ -90,6 +91,6 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
 
     public static void setUnPredictabilityLen(int length) {
         unPredictabilityLen = length;
-        setRanges();
+        setRanges(unPredictabilityLen);
     }
 }
