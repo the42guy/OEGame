@@ -23,10 +23,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         for(int i : range) {
             int previous;
             range[i] = (int) (random() * 10);
-            if ((i == 0) || (range.length == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
-                System.out.println("First time here/range length is one");
-                System.out.printf("range[%d] initialized as %d in this first iteration", i, range[i]);
-            } else if (range.length > 1) {                                                                //if the range length is more than 1 or not equal to 0
+            if ((range.length > 1) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
                 boolean noUniqueValues = true;
                 do {
                     previous = i - 1;                                                                                   //won't generate exceptions as previous will exist for ranges longer than one in length
@@ -42,6 +39,9 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                     }
                 } while (noUniqueValues);
                 System.out.printf("Range[%d] initialized as %d", i, range[i]);
+            } else if ((i == 0) || (range.length == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
+                System.out.println("First time here/range length is one");
+                System.out.printf("range[%d] initialized as %d in this first iteration", i, range[i]);
             }
         }
     }
