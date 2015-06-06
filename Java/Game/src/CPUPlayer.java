@@ -30,6 +30,15 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                 System.out.printf("range[%d] initialized as %d in this first iteration\n", i, range[i]);
             }
         }
+        System.out.println("The range is now: ");
+        for(int i = 0; i < range.length; i++) {
+            if(i == range.length) {
+                System.out.print(range[i]);
+            } else {
+                System.out.print(range[i] + ", ");
+            }
+
+        }
     }
 
     private static int createUniqueNumber(int a, int[] arrayToSearchFora) {
@@ -48,7 +57,6 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                 System.out.println();
             }
         } while (areEqual);
-
         return a;
     }
 
