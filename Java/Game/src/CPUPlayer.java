@@ -20,24 +20,10 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     private static void setRanges(int length) {                                                                                   //randomly sets the ranges, depending on max capacity
         range = new int[length];
         System.out.printf("The length is %d, which is equal to %d\n", range.length, length);
-        for(int i : range) {
-            int previous;
+        for(int i = 0; i < range.length; i++) {
             range[i] = (int) (random() * 10);
             if ((range.length > 1) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
-                boolean noUniqueValues = true;
-                do {
-                    previous = i - 1;                                                                                   //won't generate exceptions as previous will exist for ranges longer than one in length
-                    if(numEqual(range[previous], range[i])) {
-                        range[i] = (int) (random() * 10);
-                        if(numEqual(range[i], range[previous])) {
-                            noUniqueValues = true;
-                            System.out.println("Some values are similar: " + range[i] + " and " + range[previous]);
-                        } else /* if (!(numEqual(range[i], range[previous])))*/ {
-                            noUniqueValues = false;
-                            System.out.println("Some values are not similar: " + range[i] + " and " + range[previous]);
-                        }
-                    }
-                } while (noUniqueValues);
+                range[i] = createUniqueNumber(range[i], range);
                 System.out.printf("Range[%d] initialized as %d", i, range[i]);
             } else if ((i == 0) || (range.length == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
                 System.out.println("First time here/range length is one");
@@ -46,12 +32,22 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         }
     }
 
-    private static boolean numEqual(int a, int b) {
+    private static int createUniqueNumber(int a, int[] arrayToSearchFora) {
         boolean areEqual = false;
-        if(a == b) {
-            areEqual = true;
-        }
-        return areEqual;
+        do {
+            for(int i: arrayToSearchFora) {
+                if(a == arrayToSearchFora[i]) {
+                    areEqual  = true;
+                    a = (int) (Math.random() * 10);
+                    System.out.println("The given value is not unique, now initialized as " + a);
+                } else {
+                    areEqual = false;
+                    System.out.println("The given value is unique");
+                }
+            }
+        } while (areEqual);
+
+        return a;
     }
 
 
