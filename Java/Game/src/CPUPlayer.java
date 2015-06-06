@@ -24,10 +24,10 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
             range[i] = (int) (random() * 10);
             if ((range.length > 1) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
                 range[i] = createUniqueNumber(range[i], range);
-                System.out.printf("Range[%d] initialized as %d", i, range[i]);
+                System.out.printf("Range[%d] initialized as %d\n", i, range[i]);
             } else if ((i == 0) || (range.length == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
                 System.out.println("First time here/range length is one");
-                System.out.printf("range[%d] initialized as %d in this first iteration", i, range[i]);
+                System.out.printf("range[%d] initialized as %d in this first iteration\n", i, range[i]);
             }
         }
     }
@@ -35,15 +35,17 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     private static int createUniqueNumber(int a, int[] arrayToSearchFora) {
         boolean areEqual = false;
         do {
-            for(int i: arrayToSearchFora) {
+            for(int i = 0; i < arrayToSearchFora.length; i++) {
+                System.out.println("Inside loop for i = " + i);
                 if(a == arrayToSearchFora[i]) {
                     areEqual  = true;
                     a = (int) (Math.random() * 10);
                     System.out.println("The given value is not unique, now initialized as " + a);
                 } else {
                     areEqual = false;
-                    System.out.println("The given value is unique");
+                    System.out.printf("The given value %d is unique\n", a);
                 }
+                System.out.println();
             }
         } while (areEqual);
 
