@@ -126,7 +126,7 @@ public abstract class Game {
                 Player.incrementScore(userRun);                                                                         //increment Player's score
             }
             System.out.printf("Your score is %d\n\n", Player.getScore());
-        } while (notOutYet);
+        } while (notOutYet && Player.getScore() < CPUPlayer.getScore());
     }
 
     private static void ball() {
