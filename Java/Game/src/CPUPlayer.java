@@ -44,19 +44,21 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     private static int createUniqueNumber(int a, int[] arrayToSearchFora) {
     	boolean areEqual = false;
         for(int i = 0; i < arrayToSearchFora.length; i++) {
-            System.out.println("Inside loop for i = " + i);
-            if(a == arrayToSearchFora[i]) {
-            	areEqual = true;
-            	break;																							// Break if it finds just one instance of the value
+            for(int j = 0; j < i; j++) {
+                boolean iAndJEqual = true;
+                do {
+                    if(range[i] == range[j]) {
+                        range[i] = (int) (Math.random() * 10);
+                        System.out.printf("The int %d now initialized as %d\n", range[j], range[i]);
+                    } else if (range[i] != range[j]) {
+                        System.out.printf("The ints %d and %d are not equal\n", range[i], range[j]);
+                        iAndJEqual = false;
+                    }
+                } while (iAndJEqual);
+                System.out.printf("Ending for inner index %d\n\n", j);
             }
-            System.out.println();
         }
-        if(areEqual) {
-        	a = (int) (Math.random() * 10);																		// Generate a Value if the value is not Unique
-            System.out.println("The given value is not unique, now initialized as " + a);
-        } else {
-            System.out.printf("The given value %d is unique\n", a);
-        }
+
         return a;
     }
 
