@@ -48,8 +48,8 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                 boolean iAndJEqual = true;
                 do {
                     if(range[i] == range[j]) {
-                        range[i] = (int) (Math.random() * 10);
-                        System.out.printf("The int %d now initialized as %d\n", range[j], range[i]);
+                        range[j] = (int) (Math.random() * 10);
+                        System.out.printf("The int %d now initialized as %d\n", range[i], range[j]);
                     } else if (range[i] != range[j]) {
                         System.out.printf("The ints %d and %d are not equal\n", range[i], range[j]);
                         iAndJEqual = false;
