@@ -23,8 +23,8 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         ArrayList<Integer> range = new ArrayList<>(length);
         System.out.printf("The length is %d\n", range.size());
         for(int i = 0; i < length; i++) {
-            range.add(i, (int) (random() * 10));
-            if ((range.size() > 1) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
+            range.add(i, getRandomInt());
+            if ((range.size() > 0) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
                 range.add(i, createUniqueNumber(range.get(i), range));
                 System.out.printf("Range[%d] initialized as %d\n", i, range.get(i));
             } else if ((i == 0) || (range.size() == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
@@ -34,12 +34,11 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         }
         System.out.println("The range is now: ");
         for(int i = 0; i < length; i++) {
-            if(i == length) {
-                System.out.print(range.get(i));
+            if(i+1 == length) {
+                System.out.print(range.get(i) + "\n");
             } else {
                 System.out.print(range.get(i) + ", ");
             }
-
         }
     }
 
@@ -48,7 +47,7 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
         for(int i = 0; i < arrayToSearchFora.size(); i++) {
             do {
                 if(a == arrayToSearchFora.get(i)) {
-                    arrayToSearchFora.set(i, (int) (Math.random() * 10));
+                    arrayToSearchFora.set(i, getRandomInt());
                     System.out.printf("The int %d now initialized as %d, since they were equal\n", a, arrayToSearchFora.get(i));
                 } else if (a != arrayToSearchFora.get(i)) {
                     System.out.printf("The ints %d and %d are not equal\n", a, arrayToSearchFora.get(i));
@@ -56,10 +55,13 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
                 }
             } while (areEqual);
         }
-
         return a;
     }
 
+    private static int getRandomInt() {
+        int random = (int) (random() * 10);
+        return random;
+    }
 
     public static int getNum() {                                                                                        //gets a random input from the bot
         int botChoice;
