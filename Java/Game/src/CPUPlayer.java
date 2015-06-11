@@ -59,8 +59,8 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     }
 
     private static int getRandomInt() {
-        int random = (int) (random() * 10);
-        return random;
+        int randomInt = (int) (random() * 10);
+        return randomInt;
     }
 
     public static int getNum() {                                                                                        //gets a random input from the bot
