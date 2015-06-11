@@ -8,7 +8,7 @@ import static java.lang.Math.*;
 public class CPUPlayer extends Player /*implements PlayerInterface*/ {                                                  //will implement when multiplayer is more developed, possibly not extend Player
     private static int score;
     private static int unPredictabilityLen;                                                                            //on a scale of 1-10, 10 means extremely difficult, 1 means darn easy
-    private static int[] range;
+    private static ArrayList<Integer> outputRange;
     private static String name = "Bot";
 
     /*public short getBotNum() {                                                                                          //this method might be needed for multi-bots
@@ -20,42 +20,37 @@ public class CPUPlayer extends Player /*implements PlayerInterface*/ {          
     }
 
     private static void setRanges(int length) {                                                                                   //randomly sets the ranges, depending on max capacity
-        ArrayList<Integer> range = new ArrayList<>(length);
-        System.out.printf("The length is %d\n", range.size());
+        outputRange = new ArrayList<>(length);
+        System.out.printf("The length is %d\n", length);
         for(int i = 0; i < length; i++) {
-            range.add(i, getRandomInt());
-            if ((range.size() > 0) && (i > 0)) {                                                                //if the range length is more than 1 or not equal to 0
-                range.add(i, createUniqueNumber(range.get(i), range));
-                System.out.printf("Range[%d] initialized as %d\n", i, range.get(i));
-            } else if ((i == 0) || (range.size() == 1)) {                                                                      //if the length of range is 1 or it is the first iteration here
-                System.out.println("First time here/range length is one");
-                System.out.printf("range[%d] initialized as %d in this first iteration\n", i, range.get(i));
-            }
+            switch (i) {
+                case 0:
+                    outputRange.add(0, getRandomInt());
+                    break;
+                default:
+                    int intToCheck = getRandomInt();
+                    boolean hasInt = outputRange.contains(intToCheck);
+                    while(hasInt) {
+                        intToCheck = getRandomInt();
+                        if(!outputRange.contains(intToCheck)) {
+                            hasInt = false;
+                        }
+                    } //end while
+                    outputRange.add(i, intToCheck);
+            } //end switch case
         }
-        System.out.println("The range is now: ");
-        for(int i = 0; i < length; i++) {
-            if(i+1 == length) {
-                System.out.print(range.get(i) + "\n");
-            } else {
-                System.out.print(range.get(i) + ", ");
-            }
-        }
+        printRange();
     }
 
-    private static int createUniqueNumber(int a, ArrayList<Integer> arrayToSearchFora) {
-    	boolean areEqual = true;
-        for(int i = 0; i < arrayToSearchFora.size(); i++) {
-            do {
-                if(a == arrayToSearchFora.get(i)) {
-                    arrayToSearchFora.set(i, getRandomInt());
-                    System.out.printf("The int %d now initialized as %d, since they were equal\n", a, arrayToSearchFora.get(i));
-                } else if (a != arrayToSearchFora.get(i)) {
-                    System.out.printf("The ints %d and %d are not equal\n", a, arrayToSearchFora.get(i));
-                    areEqual = false;
-                }
-            } while (areEqual);
+    private static void printRange() {
+        System.out.println("The outputRange is now: ");
+        for(int i = 0; i < outputRange.size(); i++) {
+            if(i+1 == outputRange.size()) {
+                System.out.print(outputRange.get(i) + "\n");
+            } else {
+                System.out.print(outputRange.get(i) + ", ");
+            }
         }
-        return a;
     }
 
     private static int getRandomInt() {
